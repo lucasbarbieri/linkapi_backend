@@ -1,12 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const IntegrationController = require('./src/app/Controllers/IntegrationController')
+const { Router } = require("express");
+const OpportunityController = require("./src/app/Controllers/OpportunityController");
+const routes = new Router();
 
-router.get('/', function (req, res, next) {
-    res.status(200).send({
-        title: 'Welcome Integration LinkApi Backend Test',
-        version: "1.0"
-    });
+routes.get("/", function(req, res, next) {
+  res.status(200).send({
+    title: "Welcome Integration LinkApi Backend Test",
+    version: "1.0"
+  });
 });
 
-module.exports = router;
+routes.get("/opportunity", OpportunityController.get);
+
+module.exports = routes;
